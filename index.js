@@ -4,12 +4,14 @@ for (var i=0;i<noOfDrumButtons;i++){
     document.querySelectorAll(".drum")[i].addEventListener("click",function (){
         var buttonInnerHTML=this.innerHTML;
         makeSound(buttonInnerHTML);
+        buttonAnimaton(buttonAnimaton);
         //what to do when button clicked  
     });
 }
 
 document.addEventListener("keydown",function(event) {
     makeSound(event.key);
+    buttonAnimaton(event.key);
 
     //detecting keyboard press
 });
@@ -43,5 +45,13 @@ function makeSound(key){
             var audio = new Audio("sounds/kick-bass.mp3");
             audio.play();     
             break;
+        default: console.log((buttonInnerHTML));
+        
     }
 };
+
+function buttonAnimaton(currentKey){
+   var activeButton= document.querySelector("."+currentKey);
+   activeButton.classList.add("pressed");
+
+}
